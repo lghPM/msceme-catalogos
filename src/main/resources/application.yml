@@ -1,0 +1,238 @@
+spring:
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+    locale: es_MX    
+    serialization:
+      fail-on-empty-beans: false
+  config:
+    activate:
+      on-profile:
+       default
+  datasource:
+    url: ${CADENA_CONEXION_DB}
+    username: ${USER_DB}
+    password: ${PASSWORD_DB}
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: America/Mexico_City
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+  security:
+    user:
+      name: userCeme
+      password: p@55w@rd
+server:
+  servlet:
+    contextPath: /msceme-catalogos/v1
+  port: 8080
+  
+authorization:
+  signingKey: ${SIGNING_KEY_OAUTH}
+
+info:
+  component: Microservicio  Funcionalidad Base para central de mezclas
+logging:
+  file:
+    name: msceme-catalogos.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.hibernate.SQL: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework: INFO
+    mx.gob.imss.cit.ceme: ${MS_LOG_LEVEL}
+    
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health, info, env, beans, metrics, threaddump, vigencia, genericEndPoints
+  endpoint:
+    health:
+      show-details: always
+    security:
+      enabled: false
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+token:
+  signing:
+    key: ${SIGNING_KEY_OAUTH}
+---
+spring:
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+    locale: es_MX    
+    serialization:
+      fail-on-empty-beans: false
+  config:
+    activate:
+      on-profile:
+       local
+  datasource:
+    url: jdbc:mariadb://10.100.8.166:3306/MJLSSCBDQA01?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: MJLSSCBD_USER
+    password: MJLSSCB_U534
+    driverClassName: org.mariadb.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: America/Mexico_City
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    show-sql: true
+  security:
+    user:
+      name: userCeme
+      password: p@55w@rd
+server:
+  servlet:
+    contextPath: /msceme-catalogos/v1
+  port: 9091
+  
+authorization:
+  signingKey: algun_codigo_secreto_qwerty_pa_validar_token
+
+info:
+  component: Microservicio  Funcionalidad Base para central de mezclas
+logging:
+  file:
+    name: msceme-catalogos.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.hibernate.SQL: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: DEBUG
+    org.springframework: INFO
+    mx.gob.imss.cit.ceme: INFO
+    
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health, info, env, beans, metrics, threaddump, vigencia, genericEndPoints
+  endpoint:
+    health:
+      show-details: always
+    security:
+      enabled: false
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+token:
+  signing:
+    key: 556f8b25b1f524cd7cc044c58beb3cfa7358092afbe33ddba9f668f4e86b04bf
+
+---
+spring:
+  jackson:
+    date-format: yyyy-MM-dd
+    time-zone: America/Mexico_City
+    locale: es_MX    
+    serialization:
+      fail-on-empty-beans: false
+  config:
+    activate:
+      on-profile:
+       h2
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=TRUE;
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: America/Mexico_City
+           # Format queries
+        format_sql: true
+        
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true  
+  security:
+    user:
+      name: userCeme
+      password: p@55w@rd
+server:
+  servlet:
+    contextPath: /msceme-catalogos/v1
+  port: 9091
+  
+authorization:
+  signingKey: algun_codigo_secreto_qwerty_pa_validar_token
+
+info:
+  component: Microservicio  Funcionalidad Base para central de mezclas
+logging:
+  file:
+    name: msceme-catalogos.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.springframework: INFO
+    mx.gob.imss.cit.ceme: DEBUG
+    org.hibernate.SQL: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: INFO
+management:
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: health, info, env, beans, metrics, threaddump, vigencia, genericEndPoints
+  endpoint:
+    health:
+      show-details: always
+    security:
+      enabled: false
+  health:
+    defaults:
+      enabled: false
+    db:
+      enabled: true
+    ping:
+      enabled: true
+  info:
+    git:
+      mode: full
+token:
+  signing:
+    key: 556f8b25b1f524cd7cc044c58beb3cfa7358092afbe33ddba9f668f4e86b04bf
