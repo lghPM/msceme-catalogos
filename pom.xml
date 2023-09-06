@@ -13,9 +13,9 @@
 	<artifactId>msceme-catalogos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>msceme-catalogos</name>
-	<description>Microservicio Base Para Central De Mezclas</description>
+	<description>Microservicio Catalogos Para Central De Mezclas</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>17</java.version>
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
 	</properties>
 	<dependencies>
@@ -76,6 +76,10 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 		<!--mappers -->
 		<dependency>
 			<groupId>org.modelmapper</groupId>
@@ -87,9 +91,16 @@
 			<artifactId>mapstruct</artifactId>
 			<version>${org.mapstruct.version}</version>
 		</dependency>
+		<!-- Swagger UI -->
+		<!--https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+
 
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -130,7 +141,7 @@
 					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
-			
+
 		</plugins>
 	</build>
 </project>

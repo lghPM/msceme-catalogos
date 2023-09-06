@@ -27,6 +27,7 @@ public class SecurityConfig {
 				.authorizeHttpRequests(request -> 
 				request.requestMatchers(antMatcher("/h2-console/**")).permitAll()
 						.requestMatchers(antMatcher("/actuator/**")).permitAll()
+						.requestMatchers(antMatcher("/swagger-ui/**")).permitAll()
 						// .requestMatchers("/api/v1/auth/**").permitAll() // se modifica al subir aspring 3.1.3
 						.anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults())

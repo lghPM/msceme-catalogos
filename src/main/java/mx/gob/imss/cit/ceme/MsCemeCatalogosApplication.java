@@ -9,13 +9,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
 import jakarta.annotation.PostConstruct;
 
 @SpringBootApplication
-public class MscemeBaseApplication {
+public class MsCemeCatalogosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MscemeBaseApplication.class, args);
+		SpringApplication.run(MsCemeCatalogosApplication.class, args);
 	}
 
 	@PostConstruct
@@ -38,5 +40,11 @@ public class MscemeBaseApplication {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration().setAmbiguityIgnored(true);
 		return modelMapper;
+	}
+
+	@Bean
+	OpenAPI customOpenAPI() {
+		return new OpenAPI().info(new Info().title("Central de Mezclas").version("0.10")
+				.description("WS Base para Cental de Mezclas"));
 	}
 }
